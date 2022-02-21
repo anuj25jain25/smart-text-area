@@ -19,10 +19,11 @@ npm start
 
 ## Examples
 
-| Input                     | Output             |
-| ------------------------- | ------------------ |
-| Hello World /upper        | Hello WORLD        |
-| Sum for 2 + 5 is /add 2 5 | Sum for 2 + 5 is 7 |
+| Input                     | Output                                       |
+| ------------------------- | -------------------------------------------- |
+| Hello World /upper        | Hello WORLD                                  |
+| Sum for 2 + 5 is /add 2 5 | Sum for 2 + 5 is 7                           |
+| /addCommand               | this command will open create command pop-up |
 
 
 ## Project Plan

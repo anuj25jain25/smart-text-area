@@ -21,13 +21,12 @@ function CreateComponent(props) {
     const [code, setCode] = useState(defaultCode);
 
     const onChange = (newValue, e) => {
-        console.log('onChange', newValue, e);
         setCode(newValue);
     }
     const editorDidMount = (editor, monaco) => {
-        // console.log('editorDidMount', editor);
     }
     const saveCode = () => {
+        if (!commandName || !code) return;
         saveCommand({
             name: commandName,
             noOfParams: noOfParams,
@@ -48,14 +47,17 @@ function CreateComponent(props) {
             <div className='line-one'>
                 <p className='generic-title'>Write command name.</p>
                 <input
+                    required
                     className='custom-input'
-                    placeholder='/lower'
+                    placeholder='/command_name'
                     value={commandName}
                     onChange={commandNameOnchange} />
             </div>
             <div className='line-two'>
                 <p className='generic-title'>Write number of command parameters if there are any.</p>
                 <input
+                    min={0}
+                    required
                     className='custom-input'
                     type='number'
                     placeholder='Write number of command parameters if there are any...'
@@ -80,8 +82,19 @@ function CreateComponent(props) {
                 />
             </div>
             <div className='action-btns'>
-                <button className='green' onClick={saveCode}>Submit</button>
-                <button className='red' onClick={() => cancel()}>Cancel</button>
+                <button
+                    disabled={!commandName || !code}
+                    className='green'
+                    onClick={saveCode}
+                >Submit</button>
+                <button
+                    className='red'
+                    onClick={() => cancel()
+                    }>Cancel</button>
+            </div>
+            <div className='error-display'>
+                {!commandName ? "Command Name is required!" :
+                    !code ? "Function is required!" : null}
             </div>
         </div>
     </div>
